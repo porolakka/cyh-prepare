@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <meta charset="UTF-8"> 
+        <title>単語の聞き取り・入力</title>
+    </head>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+    (function () {
+        var audio = null;
+        window.addEventListener("load",function() {
+            audio = document.getElementById("audio");
+    
+            /* 再生 */
+            document.getElementById("play").addEventListener("click", playAudio, false);
+    
+            /* 停止 */
+            document.getElementById("pause").addEventListener("click", pauseAudio, false); 
+    
+            },false);
+    
+        /* 再生 */
+        function playAudio(evt) {
+            evt.target.disabled = true;
+            document.getElementById("pause").disabled = false;
+            audio.play();
+        }
+    
+        /* 停止 */
+        function pauseAudio(evt) {
+            evt.target.disabled = true;
+            document.getElementById("play").disabled = false;
+            audio.pause();
+        }
+    
+    })();
+    </script>
+    <body>
+    <div class="container">
+        <h1>聴く力</h1>
+
+        <h2>第1問</h2>
+        <dl>
+            <dd><audio src="./words/001.mp3" id="audio"></audio></dd>
+            <dd><button type="button" class="btn btn-primary" id="play">▶︎</button></dd>
+            <dd><button type="button" class="btn btn-primary" id="pause" style="display:none;">▪️</button></dd>
+        </dl>
+        <div class="form-row align-items-center">
+            <div class="col-auto">
+                <label class="sr-only" for="exampleFormControlInput1">回答</label>
+                <input type="text" class="form-control mb-2" id="exampleFormControlInput1">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+            </div>
+        </div>
+
+    </div>
+    </body>
+</html>
