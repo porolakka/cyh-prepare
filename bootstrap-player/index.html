@@ -56,16 +56,6 @@
     
     })();
     </script>
-    <script type="text/javascript">
-        $('#inputPrepend1').on("keypress", function(event){return leaveOnlyNumber(event);});
-        
-        function leaveOnlyNumber(e){
-          // 数字以外の不要な文字を削除
-          var st = String.fromCharCode(e.which);
-          if ("0123456789".indexOf(st,0) < 0) { return false; }
-          return true;  
-        }
-    </script>
     <body>
     <nav class="navbar navbar-light bg-primary">
         <span class="navbar-brand mb-0 h1 text-light">ワーキングメモリ測定</span>
@@ -107,8 +97,8 @@
                 <div class="card" style="width: 36rem;">
                     <div class="card-body">
                         <h5 class="card-title">第1問</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">単語</h6>
                         <!--
+                            <h6 class="card-subtitle mb-2 text-muted">単語</h6>
                             <p class="card-text">問題を聞いて、答えを入力してください。</p>
                         -->
                         <dl>
@@ -120,7 +110,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputPrepend1">答え</span>
                             </div>
-                            <input type="tel" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                            <input type="number" id="answer1" class="form-control" min="1" max="1000000000">
                         </div>
                         <!--
                         <a href="#" class="card-link">Card link</a>
@@ -136,8 +126,8 @@
                 <div class="card" style="width: 36rem;">
                     <div class="card-body">
                         <h5 class="card-title">第2問</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">単語</h6>
                         <!--
+                            <h6 class="card-subtitle mb-2 text-muted">単語</h6>
                             <p class="card-text">問題を聞いて、答えを入力してください。</p>
                         -->
                         <dl>
@@ -149,7 +139,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputPrepend2">答え</span>
                             </div>
-                            <input type="tel" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                            <input type="number" id="answer2" class="form-control" min="1" max="1000000000">
                         </div>
                         <!--
                         <a href="#" class="card-link">Card link</a>
@@ -157,6 +147,12 @@
                         -->
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-2">Submit</button>
             </div>
         </div>
         
