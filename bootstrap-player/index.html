@@ -11,51 +11,155 @@
     (function () {
         var audio = null;
         window.addEventListener("load",function() {
-            audio = document.getElementById("audio");
+            audio1 = document.getElementById("audio1");
+            audio2 = document.getElementById("audio2");
     
             /* 再生 */
-            document.getElementById("play").addEventListener("click", playAudio, false);
+            document.getElementById("play1").addEventListener("click", playAudio1, false);
+            document.getElementById("play2").addEventListener("click", playAudio2, false);
     
             /* 停止 */
-            document.getElementById("pause").addEventListener("click", pauseAudio, false); 
-    
+            /*
+            document.getElementById("pause1").addEventListener("click", pauseAudio1, false);
+            document.getElementById("pause2").addEventListener("click", pauseAudio2, false);  
+            */
+
             },false);
     
         /* 再生 */
-        function playAudio(evt) {
+        function playAudio1(evt) {
             evt.target.disabled = true;
-            document.getElementById("pause").disabled = false;
-            audio.play();
+            document.getElementById("pause1").disabled = false;
+            audio1.play();
+        }
+
+        function playAudio2(evt) {
+            evt.target.disabled = true;
+            document.getElementById("pause2").disabled = false;
+            audio2.play();
         }
     
         /* 停止 */
-        function pauseAudio(evt) {
+        /*
+        function pauseAudio1(evt) {
             evt.target.disabled = true;
-            document.getElementById("play").disabled = false;
-            audio.pause();
+            document.getElementById("play1").disabled = false;
+            audio1.pause();
         }
+
+        function pauseAudio2(evt) {
+            evt.target.disabled = true;
+            document.getElementById("play2").disabled = false;
+            audio2.pause();
+        }
+        */
     
     })();
     </script>
+    <script type="text/javascript">
+        $('#inputPrepend1').on("keypress", function(event){return leaveOnlyNumber(event);});
+        
+        function leaveOnlyNumber(e){
+          // 数字以外の不要な文字を削除
+          var st = String.fromCharCode(e.which);
+          if ("0123456789".indexOf(st,0) < 0) { return false; }
+          return true;  
+        }
+    </script>
     <body>
+    <nav class="navbar navbar-light bg-primary">
+        <span class="navbar-brand mb-0 h1 text-light">ワーキングメモリ測定</span>
+    </nav>
+            
     <div class="container">
-        <h1>聴く力</h1>
-
-        <h2>第1問</h2>
-        <dl>
-            <dd><audio src="./words/001.mp3" id="audio"></audio></dd>
-            <dd><button type="button" class="btn btn-primary" id="play">▶︎</button></dd>
-            <dd><button type="button" class="btn btn-primary" id="pause" style="display:none;">▪️</button></dd>
-        </dl>
-        <div class="form-row align-items-center">
-            <div class="col-auto">
-                <label class="sr-only" for="exampleFormControlInput1">回答</label>
-                <input type="text" class="form-control mb-2" id="exampleFormControlInput1">
-            </div>
-            <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+        <!--
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <h3>第1問</h3>
+                <div class="row">
+                    <div class="col-2">
+                        <dl>
+                            <dd><audio src="./words/001.mp3" id="audio"></audio></dd>
+                            <dd><button type="button" class="btn btn-primary" id="play">▶︎</button></dd>
+                            <dd><button type="button" class="btn btn-primary" id="pause" style="display:none;">▪️</button></dd>
+                        </dl>
+                    </div>
+                    <div class="col-10">
+                        <div class="form-row align-items-center">
+                            <div class="col-auto">
+                                <label class="sr-only" for="exampleFormControlInput1">回答</label>
+                                <input type="text" class="form-control  form-control-lg mb-2" id="exampleFormControlInput1">
+                            </div>
+                            
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        -->
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-auto">
+                <div class="card" style="width: 36rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">第1問</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">単語</h6>
+                        <!--
+                            <p class="card-text">問題を聞いて、答えを入力してください。</p>
+                        -->
+                        <dl>
+                            <dd><audio src="./words/001.mp3" id="audio1"></audio></dd>
+                            <dd><button type="button" class="btn btn-primary" id="play1">▶問題を聞く</button></dd>
+                            <dd><button type="button" class="btn btn-primary" id="pause1" style="display:none;">▪️</button></dd>
+                        </dl>
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputPrepend1">答え</span>
+                            </div>
+                            <input type="tel" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                        </div>
+                        <!--
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-auto">
+                <div class="card" style="width: 36rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">第2問</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">単語</h6>
+                        <!--
+                            <p class="card-text">問題を聞いて、答えを入力してください。</p>
+                        -->
+                        <dl>
+                            <dd><audio src="./words/002.mp3" id="audio2"></audio></dd>
+                            <dd><button type="button" class="btn btn-primary" id="play2">▶問題を聞く</button></dd>
+                            <dd><button type="button" class="btn btn-primary" id="pause2" style="display:none;">▪️</button></dd>
+                        </dl>
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputPrepend2">答え</span>
+                            </div>
+                            <input type="tel" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                        </div>
+                        <!--
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
 
     </div>
     </body>
